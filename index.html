@@ -72,9 +72,7 @@
 				passing = "";
 			}
 			request = new XMLHttpRequest();
-			alert("HELLLLLO");
-// 			event.preventDefault();
-			alert("HELLO");
+			event.preventDefault();
 			request.open("GET", "https://api.funtranslations.com/translate/yoda.json?text=" + passing, true);
 			if (! request) {
 				alert("Occurred, an error has.");
