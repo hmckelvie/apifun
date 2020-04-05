@@ -82,7 +82,8 @@
 			}
 			alert("YESSSS");		
 			request.onreadystatechange = function() {
-				alert("FUNC");
+				alert("status!!   " + request.status);
+				alert("ready state: "+ request.readyState);
 				if (request.status == 200 && request.readyState == 4) {
 					alert("YAAA");
 					data = this.response;
