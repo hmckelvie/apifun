@@ -74,13 +74,15 @@
 			}
 			request = new XMLHttpRequest();
 			event.preventDefault();
+			alert("HELLO");
 			request.open("GET", "https://api.funtranslations.com/translate/yoda.json?text=" + passing, true);
 			if (! request) {
 				alert("Occurred, an error has.");
 				return;
 			}
-					
+			alert("YESSSS");		
 			request.onreadystatechange = function() {
+				alert("FUNC");
 				if (request.status == 200 && request.readyState == 4) {
 					data = this.response;
 					if (JSON.stringify(data) == '{}') {
