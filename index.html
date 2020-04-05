@@ -60,7 +60,6 @@
 	<script language="javascript">
 
 		function load() {
-			alert("LOADDDD");
 			input = document.getElementById("toTranslate").value;
 			arrayInput = input.split(" ");
 			if (arrayInput.length > 0) {
@@ -73,7 +72,8 @@
 				passing = "";
 			}
 			request = new XMLHttpRequest();
-			event.preventDefault();
+			alert("HELLLLLO");
+// 			event.preventDefault();
 			alert("HELLO");
 			request.open("GET", "https://api.funtranslations.com/translate/yoda.json?text=" + passing, true);
 			if (! request) {
@@ -92,7 +92,7 @@
 						toString = JSON.parse(data);
 						content = toString.contents;
 						final = content.translated;
-						document.write("translation: " + final);
+						alert("translation: " + final);
 					}	
 				}
 				else if(request.status == 429) {
