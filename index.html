@@ -84,6 +84,7 @@
 			request.onreadystatechange = function() {
 				alert("FUNC");
 				if (request.status == 200 && request.readyState == 4) {
+					alert("YAAA");
 					data = this.response;
 					if (JSON.stringify(data) == '{}') {
 						return;
