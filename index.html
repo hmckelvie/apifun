@@ -71,7 +71,6 @@
 			else {
 				passing = "";
 			}
-			alert("HELLO");
 			request = new XMLHttpRequest();
 			event.preventDefault();
 			request.open("GET", "https://api.funtranslations.com/translate/yoda.json?text=" + passing, true);
@@ -90,7 +89,7 @@
 						toString = JSON.parse(data);
 						content = toString.contents;
 						final = content.translated;
-						alert("translation: " + final);
+						document.write("translation: " + final);
 					}	
 				}
 				else if(request.status == 429) {
