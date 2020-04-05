@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> yodaaaaa </title>
+	<style>
+		h1 {
+			text-align: center;
+			color: #A3C38F;
+			font-size: 40px;
+		}
+		img {
+			width: 100%;
+		}
+		input[type=text] {
+  			width: 40%;
+  			padding: 12px 20px;
+  			box-sizing: border-box;
+  			border-radius: 4px;
+  			background-color: #A3C38F;
+  			color: white;
+  			font-size: 25px;
+		}
+
+		input[type=submit] {
+  			width: 8%;
+  			text-align: left;
+  			box-sizing: border-box;
+  			border-radius: 12px;
+  			background-color: white;
+  			color: #A3C38F;
+  			font-size: 23px;
+		}
+
+		input[type=submit]:hover {
+  			background-color: #3D5637; /* Green */
+  			color: white;
+		}
+
+	</style>
+</head>
+<body>
+	<img src="yoda.jpeg">
+	<h1> YODA!!! </h1>
+	<br><br><br>
+	<table>
+		<tr>
+			<td style="border-style: dashed; border-color: #A3C38F; width: 85%; color: #A3C38F; text-align: left; padding: 20px;">
+				<form>
+				    <p style="font-size: 23px"><b> What would me to translate you like, hmm?  Yes, hmmm:</b> 
+  					<input type="text" id="toTranslate">
+  					<input type="submit" value="Submit" onclick="load()">
+  					</p>
+				</form>
+			</td>
+			<td style="padding: 10px;">
+				<img src="cutout.png" align="right" style="width:50%;">
+			</td>
+		</tr>
+	</table>
+	<script language="javascript">
+
+		function load() {
+			input = document.getElementById("toTranslate").value;
+			arrayInput = input.split(" ");
+			if (arrayInput.length > 0) {
+				passing = arrayInput[0];
+				for (i = 1; i < arrayInput.length; i++) {
+					passing = passing + "%20" + arrayInput[i];
+				}
+			}
+			else {
+				passing = "";
+			}
+
+			request = new XMLHttpRequest();
+			event.preventDefault();
+			request.open("GET", "https://api.funtranslations.com/translate/yoda.json?text=" + passing, true);
+			if (! request) {
+				alert("Occurred, an error has.");
+				return;
+			}
+					
+			request.onreadystatechange = function() {
+				if (request.status == 200 && request.readyState == 4) {
+					data = this.response;
+					if (JSON.stringify(data) == '{}') {
+						return;
+					}
+					else {
+						toString = JSON.parse(data);
+						content = toString.contents;
+						final = content.translated;
+						alert("translation: " + final);
+					}	
+				}
+				else if(request.status == 429) {
+					alert("Too many requests.  Yeesssssss.");
+				}
+			}
+			request.send();
+		}
+	</script>
+	<br><br><br>
+	<br><br><br>
+	<table style="background: #A3C38F; color: white; border-collapse: collapse;">
+		<tr style="border: 3px solid white; font-size: 20px; text-align: center;">
+			<td style="border: 2px solid white;">
+				about
+			</td>
+			<td style="border: 2px solid white;">
+				home
+			</td>
+			<td style="border: 2px solid white;">
+				height
+			</td>
+			<td style="border: 2px solid white;">
+				species
+			</td>
+			<td style="border: 2px solid white;">
+				weapon
+			</td>
+			
+		</tr>
+		<tr>
+			<td style="width: 40%; border: 2px solid white;">
+				Yoda was a legendary Jedi Master and stronger than most in his
+				connection with the Force. Small in size but wise and powerful,
+				he trained Jedi for over 800 years, playing integral roles in
+				the Clone Wars, the instruction of Luke Skywalker, and unlocking
+				the path to immortality. 
+			</td>
+			<td style="border: 2px solid white;">
+				Yoda's Hut
+			</td>
+			<td style="border: 2px solid white;">
+				0.66m
+			</td>
+			<td style="border: 2px solid white;">
+				~unknown~
+			</td>
+			<td style="border: 2px solid white;">
+				Lightsaber
+			</td>
+		</tr>
+	</table>
+	<br><br><br>
+	<br><br><br>
+	<table style="background: white; color: #3D5637; font-size: 20px; border-collapse: collapse; border: 3px dashed #A3C38F; padding: 20px;">
+		<tr style="padding: 20px;">
+			<td style="border: 1px solid #A3C38F; padding: 20px;">
+				<b>The api used was a yoda translator. It takes an English phrase and converts the
+				diction so that it sounds like something Yoda would say.</b>
+			</td>
+		</tr>
+		<tr style="padding: 20px;">
+			<td style="border: 1px solid #A3C38F; padding: 20px;">
+				<a href="https://funtranslations.com/api/yoda#endpoint" style="color: #3D5637;"> <b>link to the host is here! </b> </a>
+			</td>
+		</tr>
+		<tr style="padding: 20px;">
+			<td style="border: 1px solid #A3C38F; padding: 20px;">
+				<b>To request the api, I did an XMLHttpRequest and verified that the "Get" request
+				 	was sucesful through verifying the status and ready state. </b>
+			</td>
+		</tr>
+		<tr style="padding: 20px;">
+			<td style="border: 1px solid #A3C38F; padding: 20px;">
+				<b>
+				This api would be helpful on a star wars fan website if there was an option to 
+				start chatting with yoda bot. Also, this api could be used to translate Yoda
+				speak to regular English and to verify that the translation was correct.
+				</b>
+			</td>
+		</tr>		
+	</table>
+</body>
+</html>
