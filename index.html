@@ -79,10 +79,10 @@
 				return;
 			}	
 			request.onreadystatechange = function() {
-				alert("status!!   " + request.status);
-				alert("ready state: "+ request.readyState);
+// 				alert("status!!   " + request.status);
+// 				alert("ready state: "+ request.readyState);
 				if (request.status == 200 && request.readyState == 4) {
-					alert("YAAA");
+// 					alert("YAAA");
 					data = this.response;
 					if (JSON.stringify(data) == '{}') {
 						return;
